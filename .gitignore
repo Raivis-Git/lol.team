@@ -1,3 +1,5 @@
+src/main/java/lol/team/constants/LeagueOfLegends.java
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
