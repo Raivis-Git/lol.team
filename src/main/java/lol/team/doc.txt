@@ -1,0 +1,3 @@
+LEAGUE V4 API
+You can retrieve data about solo/flex challenger/grandmaster/master players.
+queue is ranked solo or flex
