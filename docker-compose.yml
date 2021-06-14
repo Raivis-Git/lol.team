@@ -2,20 +2,28 @@ version: "3.3"
 
 services:
   java:
-    image: springio/gs-spring-boot-docker:latest
+    build: .
     container_name: springbootapp
     ports:
       - "80:80"
     networks:
       - app-network
+    env_file:
+      - env/javadatabase.env
+    volumes:
+      - ./target/dependency/project:/app
+#      - ./target/dependency/META-INF /app/META-INF
+#      - ./target/dependency/BOOT-INF/lib /app
+    depends_on:
+      - database
 
   database:
     container_name: DB
     image: 'docker.io/bitnami/postgresql:13-debian-10'
     env_file:
-      - database.env
+      - env/pgdatabase.env
     ports:
-      - 5433:5433
+      - 5432:5432
     networks:
     - app-network
   #Docker Networks
