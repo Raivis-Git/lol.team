@@ -1,0 +1,24 @@
+version: "3.3"
+
+services:
+  java:
+    image: springio/gs-spring-boot-docker:latest
+    container_name: springbootapp
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+  database:
+    container_name: DB
+    image: 'docker.io/bitnami/postgresql:13-debian-10'
+    env_file:
+      - database.env
+    ports:
+      - 5433:5433
+    networks:
+    - app-network
+  #Docker Networks
+networks:
+  app-network:
+    driver: bridge
