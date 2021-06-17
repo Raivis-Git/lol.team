@@ -12,8 +12,6 @@ services:
       - env/javadatabase.env
     volumes:
       - ./target/dependency/project:/app
-#      - ./target/dependency/META-INF /app/META-INF
-#      - ./target/dependency/BOOT-INF/lib /app
     depends_on:
       - database
 
