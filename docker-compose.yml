@@ -1,19 +1,29 @@
 version: "3.3"
 
 services:
-  java:
-    build: .
-    container_name: springbootapp
+  backend:
+    container_name: backend
+    build: ./backend
     ports:
-      - "80:80"
+      - "8080:8080"
     networks:
       - app-network
     env_file:
       - env/javadatabase.env
-    volumes:
-      - ./target/dependency/project:/app
+#    volumes:
+#      - /target/dependency/project:/app
     depends_on:
       - database
+
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - "3000:5002"
+    networks:
+      - app-network
+    depends_on:
+      - backend
 
   database:
     container_name: DB
